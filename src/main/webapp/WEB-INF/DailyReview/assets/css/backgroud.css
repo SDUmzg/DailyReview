@@ -1,0 +1,78 @@
+.container{
+	width: 100%;
+	height: 1300px;
+/*	background: #456990;*/
+	/*background:#fafafa; */
+	background: #eee;
+}
+#daily_left,#daily_right{
+	height: 100%;
+	min-height: 100%;
+}
+.checkList{
+	display: block;
+	width: 100%;
+	height: 520px;
+	text-align: center;
+    vertical-align: bottom;
+    font-family: "Colonna MT";
+    /*background: #1A8BB3;*/
+}
+.cutline{
+	width: 100%;
+	margin-left: 0px;
+	border-top: 1px solid darkgray;
+	margin-top: 120px;
+	margin-bottom: 30px;
+}
+.cutHr{
+	height:1px;
+	border:none;
+	border-top:1px solid #555555;
+}
+div.checkList .cbtn {
+    vertical-align: middle;
+    font-size: .5em;
+}
+
+div.checkList .cbtn:hover {
+    font-size: .8em;
+}
+
+.checkMenu{
+	display: inline-block;
+	width: 80%;
+	margin: 0 auto;
+	font-size: 50px;
+    color: #fc8f96;
+}
+div.checkMenu label{
+	font-size: 35px;
+}
+
+.checkCon{
+	display: block;
+	width: 90%;
+	height: 90%;
+	margin: 0 auto;
+/*	background: #FFF;*/
+    background-color: #fff;
+    box-shadow:
+            0 0 3px rgba(0, 0, 0, 0.2),
+            -5px -5px 10px rgba(0, 0, 0, 0.1),
+            -10px -10px 40px rgba(0, 0, 0, 0.12),
+            inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#question{
+	width: 100%;
+	height: 100px;
+}
+
+.fontFormat{
+	font-size: 18px;
+	font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+div#question p{
+	line-height: 100px;
+}
