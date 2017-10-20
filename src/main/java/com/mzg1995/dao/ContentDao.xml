@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mzg1995.dao.ContentDao">
+    <!--schedule    start-->
+    <insert id="addSchedule" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.mzg1995.model.SqlModel.ScheduleModel">
+        <![CDATA[
+        INSERT INTO schedule (content, email)
+        VALUES (#{content}, #{email})
+        ]]>
+    </insert>
+    <select id="getSchedule" resultType="com.mzg1995.model.SqlModel.ScheduleModel">
+        <![CDATA[
+        SELECT *
+        FROM schedule
+        WHERE enabled = 1 AND email = #{email}
+        ORDER BY id DESC
+        LIMIT #{page}, #{pageSize}
+        ]]>
+    </select>
+    <select id="getScheduleAll" resultType="com.mzg1995.model.SqlModel.ScheduleModel">
+        <![CDATA[
+        SELECT *
+        FROM schedule
+        WHERE email = #{email}
+        ORDER BY id DESC
+        LIMIT #{page}, #{pageSize}
+        ]]>
+    </select>
+    <select id="getScheduleById" resultType="com.mzg1995.model.SqlModel.ScheduleModel">
+        <![CDATA[
+        SELECT *
+        FROM schedule
+        WHERE id = #{id}
+        ]]>
+    </select>
+    <update id="updateSchedule">
+        <![CDATA[
+        UPDATE schedule
+        SET content = #{content,jdbcType=VARCHAR},
+            enabled = #{enabled,jdbcType=TINYINT}
+        WHERE id = #{id}
+        ]]>
+    </update>
+    <!--schedule    end-->
+
+    <!--diary    start-->
+    <insert id="addDiary" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        INSERT INTO diary (topic, content, email)
+        VALUES (#{topic}, #{content}, #{email})
+        ]]>
+    </insert>
+    <select id="getDiary" resultType="com.mzg1995.model.SqlModel.DiaryModel">
+        <![CDATA[
+        SELECT *
+        FROM diary
+        WHERE email = #{email}
+        ORDER BY id DESC
+        LIMIT #{page}, #{pageSize}
+        ]]>
+    </select>
+    <select id="getDiaryById" resultType="com.mzg1995.model.SqlModel.DiaryModel">
+        <![CDATA[
+        SELECT *
+        FROM diary
+        WHERE id = #{id}
+        ]]>
+    </select>
+    <update id="updateDiary">
+        <![CDATA[
+        UPDATE diary
+        SET topic   = #{topic,jdbcType=VARCHAR},
+            content = #{content,jdbcType=VARCHAR},
+            enabled = #{enabled,jdbcType=TINYINT}
+        WHERE id = #{id}
+        ]]>
+    </update>
+    <!--diary    end-->
+
+    <!--knowledge    start-->
+    <insert id="addKonwledge" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        INSERT INTO knowledge (question, answer, proficiency, email)
+        VALUES (#{question}, #{answer}, #{proficiency}, #{email})
+        ]]>
+    </insert>
+    <select id="getKnowledge" resultType="com.mzg1995.model.SqlModel.KnowledgeModel">
+        <![CDATA[
+        SELECT *
+        FROM knowledge
+        WHERE email = #{email}
+        ORDER BY id DESC
+        LIMIT #{page}, #{pageSize}
+        ]]>
+    </select>
+    <select id="getKnowledgeById" resultType="com.mzg1995.model.SqlModel.KnowledgeModel">
+        <![CDATA[
+        SELECT *
+        FROM knowledge
+        WHERE id = #{id}
+        ]]>
+    </select>
+    <select id="getKnowledgeMaxId" resultType="java.lang.Long">
+        <![CDATA[
+        SELECT max(id)
+        FROM knowledge
+        ]]>
+    </select>
+    <update id="updateKnowledge">
+        <![CDATA[
+        UPDATE knowledge
+        SET question    = #{question,jdbcType=VARCHAR},
+            answer      = #{answer,jdbcType=VARCHAR},
+            proficiency = #{proficiency,jdbcType=INTEGER},
+            enabled     = #{enabled,jdbcType=TINYINT}
+        WHERE id = #{id}
+        ]]>
+    </update>
+    <!--knowledge    end-->
+
+</mapper>

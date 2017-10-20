@@ -76,3 +76,7 @@ div.checkMenu label{
 div#question p{
 	line-height: 100px;
 }
+
+.schedule-btn{
+	float: right;
+}

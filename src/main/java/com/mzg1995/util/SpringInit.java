@@ -3,6 +3,7 @@ package com.mzg1995.util;
 /**
  * Created by mzg on 2017/9/21.
  */
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -26,6 +27,8 @@ public class SpringInit implements ServletContextListener {
 
     }
 
+    //    使用方法：
+//    deviceService = SpringInit.getApplicationContext().getBean(DeviceService.class);
     public static ApplicationContext getApplicationContext() {
         return springContext;
     }
