@@ -48,6 +48,10 @@ public class ContentServiceImpl implements ContentService {
         return contentDao.getDiary(page, pageSize, email);
     }
 
+    public List<DiaryModel> getDiaryByYear(String year,String email) {
+        return contentDao.getDiaryByYear(year,email);
+    }
+
     public DiaryModel getDiaryById(long id) {
         return contentDao.getDiaryById(id);
     }

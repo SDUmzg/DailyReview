@@ -24,4 +24,17 @@ public class MD5CodeTest {
     public void byteHEX() throws Exception {
     }
 
+    @Test
+    public void getDateFormat() throws Exception{
+        String date = "2017-09-08 14:34:19.0";
+        String[]  a=date.split("[ -]");
+        for (int i=0;i<a.length;i++){
+            System.out.println(a[i]);
+        }
+        int year = Integer.parseInt(a[0]);
+        int month = Integer.parseInt(a[1]);
+        int day = Integer.parseInt(a[2]);
+        System.out.println(year+"/"+month+"/"+day);
+    }
+
 }

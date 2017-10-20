@@ -25,6 +25,7 @@ public interface ContentDao {
     //    table name : diary
     long addDiary(DiaryModel diaryModel);
     List<DiaryModel> getDiary(@Param("page")int page , @Param("pageSize") int pageSize,@Param("email")String email);
+    List<DiaryModel> getDiaryByYear(@Param("year")String year,@Param("email")String email);
     DiaryModel getDiaryById(@Param("id")long id);
     long updateDiary(DiaryModel diaryModel);
 

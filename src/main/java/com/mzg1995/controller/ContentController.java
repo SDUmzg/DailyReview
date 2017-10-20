@@ -1,10 +1,12 @@
 package com.mzg1995.controller;
 
 import com.mzg1995.model.InterfaceModel.DataModel;
+import com.mzg1995.model.SqlModel.DiaryModel;
 import com.mzg1995.model.SqlModel.KnowledgeModel;
 import com.mzg1995.model.SqlModel.ScheduleModel;
 import com.mzg1995.service.ContentService;
 import com.mzg1995.util.ContentUtil;
+import com.sun.javafx.collections.MappingChange;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.xml.crypto.Data;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by mzg on 2017/10/19.
@@ -96,6 +101,46 @@ public class ContentController {
         dataModel.setTotal(knowledgeModelList.size());
         dataModel.setState("success");
         dataModel.setData(knowledgeModelList);
+        return dataModel;
+    }
+
+
+    /**  ******  ******  ******  ******  ******  ******  ******  ******  ******  ******  */
+
+
+    @ResponseBody
+    @RequestMapping(value = "getDiaryByYear",method = RequestMethod.GET)
+    public DataModel getDiaryByYear(@RequestParam("year")String year,@RequestParam("email")String email){
+        DataModel dataModel = new DataModel();
+        /**
+         * {
+         "2017/9/20": {
+         url: "/diary/2017/09/20/soyaine-daily-151" ,
+         excerpt: ""
+         },
+         "2017/9/10": {
+         url: "/diary/2017/09/10/soyaine-daily-150" ,
+         excerpt: ""
+         }
+         }*/
+        List<DiaryModel> diaryModelList =contentService.getDiaryByYear(year,email);
+        int size = diaryModelList.size();
+        Map<String,Object> result = new HashMap<>();
+        DiaryModel diaryModel;
+        for (int i=0;i<size;i++){
+            diaryModel = diaryModelList.get(i);
+            Map<String,Object> temp =new HashMap<>();
+            String[] timeArray=diaryModel.getCreate_time().split("[ -]");
+            String aTime = Integer.parseInt(timeArray[0]) +"/"+ Integer.parseInt(timeArray[1]) +"/"+Integer.parseInt(timeArray[2]);
+            String url = aTime;
+            String excerpt = diaryModel.getTopic();
+            temp.put("url",url);
+            temp.put("excerpt",excerpt);
+            result.put(aTime,temp);
+        }
+        dataModel.setTotal(size);
+        dataModel.setState("success");
+        dataModel.setData(result);
         return dataModel;
     }
 

@@ -60,6 +60,15 @@
         LIMIT #{page}, #{pageSize}
         ]]>
     </select>
+    <select id="getDiaryByYear" resultType="com.mzg1995.model.SqlModel.DiaryModel">
+        <![CDATA[
+        SELECT *
+        FROM diary
+        WHERE email = #{email}
+            AND YEAR(create_time)=#{year}
+        ORDER BY create_time
+        ]]>
+    </select>
     <select id="getDiaryById" resultType="com.mzg1995.model.SqlModel.DiaryModel">
         <![CDATA[
         SELECT *

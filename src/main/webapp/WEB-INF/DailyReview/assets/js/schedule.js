@@ -7,7 +7,7 @@ $(function () {
             $(this).parent().parent().css('display','none');
             $.ajax({
                 type:'get',
-                url:'/content//disableSchedule',
+                url:'/content/disableSchedule',
                 data:{
                     id:id
                 },
@@ -15,8 +15,6 @@ $(function () {
                 async:true,
                 success:function (data) {
                     //{"total":1,"state":"success","data":6}
-                },
-                error:function (data) {
                 }
             });
         }

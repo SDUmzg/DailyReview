@@ -26,6 +26,8 @@ public interface ContentService {
 
     List<DiaryModel> getDiary(int page, int pageSize, String email);
 
+    List<DiaryModel> getDiaryByYear(String year,String email);
+
     DiaryModel getDiaryById(long id);
 
     long updateDiary(DiaryModel diaryModel);
