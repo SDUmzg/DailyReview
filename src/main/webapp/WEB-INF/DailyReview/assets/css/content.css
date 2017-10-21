@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+#html-output {
+    white-space: pre-wrap;
+}
+.content-left,.content-right{
+    width: 50%;
+    height:100%;
+    padding: 0 auto;
+    float: left;
+}
+.pell-output{
+    padding-left: 50px;
+}

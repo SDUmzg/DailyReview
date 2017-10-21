@@ -79,6 +79,7 @@
     </mvc:annotation-driven>
 
     <mvc:resources mapping="/daily/**" location="/WEB-INF/DailyReview/"/>
+    <mvc:resources mapping="/fonts/**" location="/WEB-INF/DailyReview/assets/fonts/"/>
     <mvc:resources mapping="/favicon.ico" location="/WEB-INF/DailyReview/assets/img/" />
 
 

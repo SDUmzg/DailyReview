@@ -117,10 +117,6 @@ public class ContentController {
          "2017/9/20": {
          url: "/diary/2017/09/20/soyaine-daily-151" ,
          excerpt: ""
-         },
-         "2017/9/10": {
-         url: "/diary/2017/09/10/soyaine-daily-150" ,
-         excerpt: ""
          }
          }*/
         List<DiaryModel> diaryModelList =contentService.getDiaryByYear(year,email);
@@ -132,7 +128,7 @@ public class ContentController {
             Map<String,Object> temp =new HashMap<>();
             String[] timeArray=diaryModel.getCreate_time().split("[ -]");
             String aTime = Integer.parseInt(timeArray[0]) +"/"+ Integer.parseInt(timeArray[1]) +"/"+Integer.parseInt(timeArray[2]);
-            String url = aTime;
+            long url = diaryModel.getId();
             String excerpt = diaryModel.getTopic();
             temp.put("url",url);
             temp.put("excerpt",excerpt);
@@ -141,6 +137,23 @@ public class ContentController {
         dataModel.setTotal(size);
         dataModel.setState("success");
         dataModel.setData(result);
+        return dataModel;
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/getDiaryById",method = RequestMethod.GET)
+    public DataModel getDiaryById(@RequestParam("id")long id){
+        DataModel dataModel=new DataModel();
+        DiaryModel diaryModel = contentService.getDiaryById(id);
+        if (diaryModel!=null){
+            dataModel.setTotal(1);
+            dataModel.setState("success");
+        }else {
+            dataModel.setTotal(0);
+            dataModel.setState("error");
+        }
+        dataModel.setData(diaryModel);
         return dataModel;
     }
 

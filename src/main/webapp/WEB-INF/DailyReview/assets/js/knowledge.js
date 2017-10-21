@@ -1,5 +1,5 @@
 var knowledgeList=null;
-var listNum=0;
+var listNum;
 var sum=0;
 $(function () {
     $.ajax({
@@ -16,13 +16,14 @@ $(function () {
             // alert(JSON.stringify(result));
             if (result['total']!=0){
                 sum = result['total'];
+                listNum=sum-1;
                 knowledgeList = result['data'];
                 console.log(result);
             }
         }
     });
     if (sum >0){
-        startKnowledge(sum-1);
+        startKnowledge(listNum);
         $('#remeberLeft').click(function () {
             if (listNum==sum-1){
                 listNum=0;
@@ -54,6 +55,7 @@ $(function () {
 
 });
 function startKnowledge(id) {
+    $('#answer a').text('查看解答');
     $('#answer p').css('display','none');
     id = id%sum;
     var question = knowledgeList[id]['question'];

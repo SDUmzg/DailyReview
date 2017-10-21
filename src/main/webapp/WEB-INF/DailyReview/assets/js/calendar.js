@@ -16,8 +16,32 @@ function getUrlJson(year) {
     });
 }
 
-function getDiaryByDate() {
-    
+function getDiaryById(id) {
+    $.ajax({
+        type:'get',
+        url:'/content/getDiaryById',
+        data:{
+            id:id
+        },
+        dataType:'json',
+        async:false,
+        success:function (data) {
+             // alert(JSON.stringify(data.data));
+            var topic = data.data['topic'];
+            var content = data.data['content'];
+            var create_time = data.data['create_time'];
+            var html='<h2>'+topic+'</h2>\n' +
+                '      <p>'+create_time+'</p><hr>'+
+                '      <p>'+content+'</p>';
+            $('#article').html(html);
+        }
+    });
+    var cal = document.getElementById("calendar");
+    var paperA = document.getElementById("paperBefore");
+    cal.style.display = "none";
+    cal.style.visibility = "hidden";
+    // paperA.style.backgroundColor = "#fff";
+    paperA.style.backgroundColor = "#fc8f96";
 }
 
 
@@ -74,7 +98,7 @@ function calInit(){
             for(var day in render){
                 elem[i].setAttribute("id", day);
                 if(render[day].url){
-                    elem[i].innerHTML = "<a href='" + render[day].url + "'  "+"onclick='alert(this.getAttribute(\"href\"));return false;'"+">" + render[day].date + "</a>";
+                    elem[i].innerHTML = "<a href='" + render[day].url + "'  "+"onclick='getDiaryById(this.getAttribute(\"href\"));return false;'"+">" + render[day].date + "</a>";
                 }else {
                     elem[i].innerText = render[day].date;
                 }
@@ -106,7 +130,7 @@ function calInit(){
                 n = n.replace(/^[\s\uFEFF\xA0\n]+|[\s\uFEFF\n\xA0]+$/g, '');
                 var ele = document.getElementById(n);
                 if(ele){
-                    ele.innerHTML = "<a href='" + url[n].url + "'  "+"onclick='alert(this.getAttribute(\"href\"));return false;'"+">" + this.render[n].date + "</a>";
+                    ele.innerHTML = "<a href='" + url[n].url + "'  "+"onclick='getDiaryById(this.getAttribute(\"href\"));return false;'"+">" + this.render[n].date + "</a>";
                     ele.title = url[n].excerpt;
                     //render[n]["url"] = url[n];
                 }
