@@ -5,6 +5,10 @@
 	/*background:#fafafa; */
 	background: #eee;
 }
+a {text-decoration: none;  }
+a:link{text-decoration:none;}
+a:visited{text-decoration:none;}
+a:active{text-decoration:none;}
 #daily_left,#daily_right{
 	height: 100%;
 	min-height: 100%;
@@ -80,3 +84,22 @@ div#question p{
 .schedule-btn{
 	float: right;
 }
+
+#tools{
+	/*background-color: red;*/
+	position: fixed;
+	top: 3%;
+	left: 97%;
+	opacity: 0.65;
+	_position: absolute;
+	_bottom: auto;
+	/*_top: expression(eval(document.documentElement.scrollTop));*/
+	width: 50px;
+	height:35px;
+	background-color: red;
+}
+
+#loginBtn {text-decoration: none;  }
+#loginBtn:link{text-decoration:none;}
+#loginBtn:visited{text-decoration:none;}
+#loginBtn:active{text-decoration:none;}

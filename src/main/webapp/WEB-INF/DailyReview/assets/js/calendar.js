@@ -59,6 +59,17 @@ function eventAttach(){
             cal.style.visibility = "visible";
             // paperA.style.backgroundColor = "#fc8f96";
             paperA.style.backgroundColor = "#fff";
+            var html='                        <h2>关于这里</h2>\n' +
+                '                        <p>习惯有时是个平静得吓人的力量，就像摸不着成长踪迹的多肉，在你毫无意识时就扩展了它的版图。</p>\n' +
+                '                        <p>所以所丫巧借此力，记录一些学习、思考的痕迹。</p>\n' +
+                '                        <small>\n' +
+                '                            <ul>\n' +
+                '                                <em>使用说明</em>\n' +
+                '                                <li><em>日历</em>：点击右上角的小水印标记，可随时打开日历</li>\n' +
+                '                                <li><em>切换上/下一篇</em>：鼠标移到页面左右两侧点击，手机上则直接点击下方微小的箭头即可</li>\n' +
+                '                            </ul>\n' +
+                '                        </small>';
+            $('#article').html(html);
         },
 
         closeCal: function(){
